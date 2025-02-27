@@ -21,7 +21,6 @@ def run():
         'topic': 'AI LLMs',
         'current_year': str(datetime.now().year)
     }
-    
     try:
         LatestAiDevelopmentCrew().crew().kickoff(inputs=inputs)
     except Exception as e:

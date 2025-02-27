@@ -1,6 +1,7 @@
 # src/latest_ai_development/crew.py
 from crewai import Agent, Crew, Process, Task
-from crewai.project import CrewBase, agent, crew, task
+from crewai.project import CrewBase, agent, crew, task, before_kickoff, after_kickoff
+import json
 from crewai_tools import SerperDevTool
 
 @CrewBase
@@ -43,25 +44,22 @@ class LatestAiDevelopmentCrew():
       tasks=self.tasks, # Automatically created by the @task decorator
       process=Process.sequential,
       verbose=True,
+      output_log_file = "./log.json",
     )
   
-#   # src/latest_ai_development/crew.py
-# from crewai import Agent, Crew, Process, Task
-# from crewai.project import CrewBase, agent, crew, task, before_kickoff, after_kickoff
-# from crewai_tools import SerperDevTool
+  @before_kickoff
+  def before_kickoff_function(self, inputs):
+    print(f"Before kickoff function with inputs: {inputs}")
+    return inputs # You can return the inputs or modify them as needed
 
-# @CrewBase
-# class LatestAiDevelopmentCrew():
-#   """LatestAiDevelopment crew"""
+  @after_kickoff
+  def after_kickoff_function(self, result):
+    print(f"After kickoff function with result: {result}")
+    
+    with open("./report_output.txt", "w") as f:
+        f.write(result.raw)
+	
+    print("LLM output saved to report_output.txt")
 
-#   @before_kickoff
-#   def before_kickoff_function(self, inputs):
-#     print(f"Before kickoff function with inputs: {inputs}")
-#     return inputs # You can return the inputs or modify them as needed
+    return result # You can return the result or modify it as needed
 
-#   @after_kickoff
-#   def after_kickoff_function(self, result):
-#     print(f"After kickoff function with result: {result}")
-#     return result # You can return the result or modify it as needed
-
-#   # ... remaining code
