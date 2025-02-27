@@ -1,0 +1,22 @@
+research_task:
+  description: >
+    Conduct a thorough research about AI and Legal Research Analysis.
+    Retrieve and process relevant legal documents, articles, or case studies.
+    Identify key AI technologies used in legal research (e.g., NLP, machine learning, case prediction).
+    Summarize the impact of AI in the legal field.
+    Make sure you find any interesting and relevant information given the current year is 2025.
+  expected_output: >
+    A list with 10 bullet points of the most relevant information about AI and Legal Research Analysis.
+  agent: researcher
+
+reporting_task:
+  description: >
+    Conduct a thorough report on AI and Legal Research Analysis.
+    Retrieve and process relevant legal documents, articles, and case studies.
+    Identify key AI technologies used in legal research (e.g., NLP, machine learning, case prediction)
+    and summarize their impact on the legal field.
+    Make sure to include any notable developments given the current year is 2025.
+  expected_output: >
+    A detailed report consisting of 10 bullet points that summarize the most critical findings about AI 
+    and Legal Research Analysis.
+  agent: reporting_analyst
